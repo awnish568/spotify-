@@ -29,17 +29,14 @@ nav ul li{
 
 }
 .container{
-    /* min-height: 65vh; */
     font-family: 'varela Round', sans-serif;
-    /* display:flex; */
     width:70%;
-    /* background-color: blue; */
     padding: 10px;
     color: aquamarine;
     height: 65vh;
     margin: 24px auto;
     border-radius: 12px;
-    background-image: url('/bg-music.jpg');
+    background-image: url('/bg-image.jpg');
     background-size: 100%;
 }
 .songItem{

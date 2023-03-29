@@ -1,28 +1,22 @@
-console.log("welcome to spotify");
-// initialise the variables
+
 let songIndex = 0;
-let audioElement = new Audio("/songs/1.mp3");
+let audioElement = new Audio("/ringtones/1.mp3");
 let masterPlay = document.getElementById("masterPlay");
 let myProgressBar = document.getElementById("myProgressBar");
 let masterSongName = document.getElementById("masterSongName");
 let gif = document.getElementsByTagName("img");
 let names = document.getElementsByClassName("songname");
 let items = document.getElementsByClassName("songItemPlay");
-console.log(gif);
-console.log(names);
-console.log(items);
-console.log(audioElement.src);
-let songs = [
-  { songName: "ringtone1", filePath: "songs/1.mp3", coverPath: "covers/1.jpg", },
-  { songName: "ringtone2", filePath: "songs/2.mp3", coverPath: "covers/2.jpg", },
-  { songName: "ringtone3", filePath: "songs/3.mp3", coverPath: "covers/3.jpg", },
-  { songName: "ringtone4", filePath: "songs/4.mp3", coverPath: "covers/4.jpg", },
-  { songName: "ringtone5", filePath: "songs/5.mp3", coverPath: "covers/5.jpg", },
-  { songName: "ringtone6", filePath: "songs/6.mp3", coverPath: "covers/6.jpg", },
-];
-console.log(songs);
 
-// Handle play/pause click
+let songs = [
+  { songName: "ringtone1", filePath: "ringtones/1.mp3", coverPath: "covers/1.jpg", },
+  { songName: "ringtone2", filePath: "ringtones/2.mp3", coverPath: "covers/2.jpg", },
+  { songName: "ringtone3", filePath: "ringtones/3.mp3", coverPath: "covers/3.jpg", },
+  { songName: "ringtone4", filePath: "ringtones/4.mp3", coverPath: "covers/4.jpg", },
+  { songName: "ringtone5", filePath: "ringtones/5.mp3", coverPath: "covers/5.jpg", },
+  { songName: "ringtone6", filePath: "ringtones/6.mp3", coverPath: "covers/6.jpg", },
+];
+
 masterPlay.addEventListener("click", () => {
   if (audioElement.paused || audioElement.currentTime <= 0) {
     audioElement.play();
@@ -47,13 +41,10 @@ function changeicon() {
 for (let i = 0; i < 6; i++) {
   items[i].addEventListener("click", () => {
     changeicon();
-    console.log(items[i].id)
-    // let index = items[i].id;
     songIndex = parseInt(items[i].id)
-    // console.log(index);
     items[i].classList.remove("fa-circle-play");
     items[i].classList.add("fa-circle-pause");
-    audioElement.src = `songs/${songIndex + 1}.mp3`;
+    audioElement.src = `ringtones/${songIndex + 1}.mp3`;
     masterSongName.innerText = songs[songIndex].songName;
     audioElement.currentTime = 0;
     audioElement.play();
@@ -63,7 +54,6 @@ for (let i = 0; i < 6; i++) {
   });
 
 }
-// listen to events
 audioElement.addEventListener("timeupdate", () => {
   progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
   myProgressBar.value = progress;
@@ -85,7 +75,7 @@ document.getElementById('next').addEventListener('click', () => {
   else {
     songIndex += 1;
   }
-  audioElement.src = `songs/${songIndex + 1}.mp3`;
+  audioElement.src = `ringtones/${songIndex + 1}.mp3`;
   masterSongName.innerText = songs[songIndex].songName;
   audioElement.currentTime = 0;
   audioElement.play();
@@ -100,7 +90,7 @@ document.getElementById('previous').addEventListener('click', () => {
   else {
     songIndex -= 1;
   }
-  audioElement.src = `songs/${songIndex + 1}.mp3`;
+  audioElement.src = `ringtones/${songIndex + 1}.mp3`;
   masterSongName.innerText = songs[songIndex].songName;
   audioElement.currentTime = 0;
   audioElement.play();
